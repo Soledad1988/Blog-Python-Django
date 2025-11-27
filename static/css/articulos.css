@@ -1,0 +1,76 @@
+body {
+            background: linear-gradient(135deg, #0d0d0d, #1a0027);
+            min-height: 100vh;
+            color: #eee;
+}
+
+.section-title {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #e6d6ff;
+}
+
+.article-card {
+            background: #111;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(155, 80, 255, 0.25);
+            transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 35px rgba(155, 80, 255, 0.45);
+}
+
+.article-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+}
+
+.article-body {
+            padding: 20px;
+}
+
+.article-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #e7ccff;
+}
+
+.article-desc {
+            color: #ccc;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            margin-bottom: 15px;
+}
+
+.comments-badge {
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            padding: 6px 15px;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+}
+
+.btn-read {
+            background: transparent;
+            border: 2px solid #8e2de2;
+            color: #d9bfff;
+            border-radius: 25px;
+            padding: 8px 20px;
+            font-weight: 600;
+            transition: 0.3s;
+            text-decoration: none;
+}
+
+.btn-read:hover {
+            background: #8e2de2;
+            color: white;
+}

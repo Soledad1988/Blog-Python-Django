@@ -1,0 +1,68 @@
+/* NAVBAR */
+.custom-navbar {
+    background-color: #000;
+    padding: 18px 0;
+}
+
+.custom-navbar .nav-link {
+    color: #dcdcdc;
+    font-weight: 600;
+    font-size: 15px;
+    margin: 0 18px;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link.active {
+    color: white;
+}
+
+.btn-gradient {
+    background: linear-gradient(to right, #5f4bff, #dd86f8);
+    color: white;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* CAROUSEL */
+.carousel-img {
+    height: 65vh;
+    object-fit: cover;
+    filter: brightness(0.75);
+}
+
+.carousel-caption h5 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.carousel-caption p {
+    font-size: 18px;
+}
+
+/* HERO */
+.hero {
+    height: 82vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(to bottom, #0c0c0c, #4d3ebc, #5f4bff);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 95px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.btn-start {
+    background: linear-gradient(to right, #5f4bff, #dd86f8);
+    border-radius: 20px;
+    padding: 8px 30px;
+    font-weight: 600;
+    border: none;
+    color: white;
+}

@@ -1,0 +1,184 @@
+{% load static %}
+<!doctype html>
+<html lang="es-ar">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Blog{% endblock %}</title>
+
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="custom-navbar">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Artículos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Otros</a>
+                </li>
+            </ul>
+
+            <a class="btn-gradient" href="#">Regístrate</a>
+        </div>
+    </nav>
+
+    <!-- CAROUSEL -->
+    <div id="carouselNoticias" class="carousel slide" data-bs-ride="carousel">
+        
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselNoticias" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#carouselNoticias" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselNoticias" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active" data-bs-interval="3000">
+                <img src="{% static 'img/carrusel1.jpg' %}" class="d-block w-100 carousel-img" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Últimas Noticias</h5>
+                    <p>Todo lo que necesitás saber hoy.</p>
+                </div>
+            </div>
+
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="{% static 'img/carrusel2.jpg' %}" class="d-block w-100 carousel-img" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Actualidad</h5>
+                    <p>Información precisa y clara.</p>
+                </div>
+            </div>
+
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="{% static 'img/carrusel3.jpg' %}" class="d-block w-100 carousel-img" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Opiniones</h5>
+                    <p>Los análisis más relevantes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controles -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselNoticias" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselNoticias" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Bienvenidos</h1>
+        <button class="btn-start">Comencemos</button>
+    </section>
+
+   <!-- CONTENIDO DINÁMICO -->
+    <main class="container mt-5">
+
+        {% block content %}
+
+        {% for articulo in articulos %}
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ articulo.imagen.url }}" class="img-fluid rounded-start">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ articulo.titulo }}</h5>
+                        <p class="card-text">{{ articulo.resumen|truncatechars:120 }}</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                {{ articulo.fecha_publicacion|date:"d/m/Y" }}
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <p>No hay artículos cargados.</p>
+        {% endfor %}
+
+        {% endblock %}
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+    <footer class="custom-footer mt-5">
+        <div class="container py-5">
+
+            <div class="row">
+
+                <!-- Columna 1 -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-title">Mi Blog</h5>
+                    <p class="footer-text">
+                        Compartiendo noticias, artículos y contenido interesante todos los días.
+                    </p>
+                </div>
+
+                <!-- Columna 2 -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-title">Secciones</h5>
+                    <ul class="footer-list">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Artículos</a></li>
+                        <li><a href="#">Nosotros</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3 -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-title">Redes Sociales</h5>
+                    <ul class="footer-list">
+                        <li><a href="#">📘 Facebook</a></li>
+                        <li><a href="#">🐦 Twitter</a></li>
+                        <li><a href="#">📸 Instagram</a></li>
+                        <li><a href="#">💼 LinkedIn</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr class="footer-divider">
+
+            <p class="footer-copy text-center mb-0">
+                © {{ year }} Mi Blog — Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+</html>

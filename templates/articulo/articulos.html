@@ -1,0 +1,68 @@
+{"id":"42011","variant":"standard","title":"Plantilla Artículos estilo Blog"}
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}Artículos | Blog{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/articulos_1.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <h1 class="section-title text-center mb-5">Últimos Artículos</h1>
+
+    <!-- Botones de orden -->
+    <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+        <a class="btn btn-success btn-lg" href="?orden=reciente">Más reciente</a>
+        <a class="btn btn-success btn-lg" href="?orden=antiguo">Más antiguo</a>
+        <a class="btn btn-success btn-lg" href="?orden=alfabetico">Orden alfabético</a>
+        <a class="btn btn-outline-success btn-lg" href="{% url 'apps.articulo:categoria_lista' %}">Categorías</a>
+    </div>
+
+    <!-- Botones sólo para colaboradores -->
+    {% if user.is_superuser or request.user|has_group:"Colaborador" %}
+    <div class="text-center mb-5">
+        <a class="btn btn-primary btn-lg me-2" href="{% url 'apps.articulo:articulo_crear' %}">Crear artículo</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'apps.articulo:crear_categoria' %}">Nueva categoría</a>
+    </div>
+    {% endif %}
+
+    <!-- Tarjetas de artículos -->
+    <div class="row g-4">
+
+        {% for art in articulos %}
+        <div class="col-md-4">
+            <div class="article-card shadow-sm">
+
+                <img src="{{ art.imagen.url }}" class="article-img" alt="Imagen del artículo">
+
+                <div class="article-body">
+                    <h3 class="article-title">{{ art.titulo|capfirst }}</h3>
+
+                    <p class="article-desc">
+                        {{ art.resumen|truncatechars:120 }}
+                    </p>
+
+                    <span class="comments-badge">
+                        💬 {{ art.comentarios_count }} comentarios
+                    </span>
+
+                    <div class="mt-3">
+                        <a href="{% url 'apps.articulo:articulo_detalle' art.id %}" class="btn-read">Leer más</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% empty %}
+            <p class="text-center">No hay artículos disponibles.</p>
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}
