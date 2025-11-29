@@ -1,0 +1,36 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}Categoria | Blog{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/listArticulos.css' %}">
+{% endblock %}
+
+{% block hero_section %}{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+    <div class="row text-center pt-3">
+        <div class="col-lg-6 m-auto">
+            <h1 class="h1">Categorías</h1>
+            <p>
+                Desde aquí puedes elegir los artículos según la categoría que desees
+            </p>
+        </div>
+    </div>
+    <div class="row">
+  
+        <div class="col-md-12 p-5">
+            <h4 class="text-center mt-3 mb-3">{{ categoria.nombre | capfirst }}</h4>
+                <p class="text-center"><a class="btn btn-success" href="">Ingresá</a></p>
+
+                <p class="text-center"><a class="btn btn-warning" href="">Eliminar</a></p>
+           
+
+            <h3 class="text-center mt-3 mb-3">No hay categorías</h3>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

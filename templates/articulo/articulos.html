@@ -1,36 +1,25 @@
-{"id":"42011","variant":"standard","title":"Plantilla Artículos estilo Blog"}
 {% extends 'home.html' %}
 {% load static %}
 
 {% block title %}Artículos | Blog{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/articulos_1.css' %}">
+<link rel="stylesheet" href="{% static 'css/listArticulos.css' %}">
 {% endblock %}
 
-{% block content %}
+{% block hero_section %}{% endblock %}
 
+{% block content %}
 <section class="container py-5">
 
     <h1 class="section-title text-center mb-5">Últimos Artículos</h1>
 
-    <!-- Botones de orden -->
     <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
         <a class="btn btn-success btn-lg" href="?orden=reciente">Más reciente</a>
         <a class="btn btn-success btn-lg" href="?orden=antiguo">Más antiguo</a>
-        <a class="btn btn-success btn-lg" href="?orden=alfabetico">Orden alfabético</a>
-        <a class="btn btn-outline-success btn-lg" href="{% url 'apps.articulo:categoria_lista' %}">Categorías</a>
+        <a class="btn btn-outline-success btn-lg" href="{% url 'apps.articulo:listCategoria' %}">Categorías</a>
     </div>
 
-    <!-- Botones sólo para colaboradores -->
-    {% if user.is_superuser or request.user|has_group:"Colaborador" %}
-    <div class="text-center mb-5">
-        <a class="btn btn-primary btn-lg me-2" href="{% url 'apps.articulo:articulo_crear' %}">Crear artículo</a>
-        <a class="btn btn-primary btn-lg" href="{% url 'apps.articulo:crear_categoria' %}">Nueva categoría</a>
-    </div>
-    {% endif %}
-
-    <!-- Tarjetas de artículos -->
     <div class="row g-4">
 
         {% for art in articulos %}
@@ -64,5 +53,4 @@
     </div>
 
 </section>
-
 {% endblock %}

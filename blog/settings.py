@@ -27,6 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Utilizar mi usuario
+AUTH_USER_MODEL    ='usuario.Usuario'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL= '/'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Application definition
 
@@ -39,6 +46,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "apps.articulo",
+    'apps.usuario',
+    'apps.comentario',
+
 ]
 
 MIDDLEWARE = [

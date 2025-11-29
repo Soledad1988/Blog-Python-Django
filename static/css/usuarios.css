@@ -1,0 +1,93 @@
+/* CONTENEDOR GENERAL */
+.usuarios-container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 20px;
+    color: #e8e8e8;
+}
+
+/* TÍTULO */
+.usuarios-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    background: linear-gradient(to right, #5f4bff, #dd86f8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* LISTA */
+.usuarios-list {
+    width: 100%;
+}
+
+/* TARJETA DE USUARIO */
+.usuario-card {
+    background: #0f0f0f;
+    border: 1px solid #272727;
+    padding: 20px 25px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    transition: 0.3s;
+}
+
+.usuario-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 30px rgba(130, 90, 255, 0.35);
+}
+
+/* NOMBRE */
+.usuario-nombre {
+    font-size: 20px;
+    font-weight: 600;
+    color: #eaeaea;
+}
+
+.usuario-usted {
+    color: #dd86f8;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+/* BOTÓN ELIMINAR */
+.btn-eliminar {
+    background: linear-gradient(to right, #5f4bff, #dd86f8);
+    padding: 7px 20px;
+    border-radius: 25px;
+    color: white !important;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn-eliminar:hover {
+    filter: brightness(1.2);
+}
+
+/* MENSAJE SIN USUARIOS */
+.sin-usuarios {
+    color: #bbb;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* ACCESO RESTRINGIDO */
+.usuarios-restringido {
+    text-align: center;
+    padding: 50px;
+    background: #141414;
+    border-radius: 20px;
+    border: 1px solid #2a2a2a;
+}
+
+.usuarios-restringido h3 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}

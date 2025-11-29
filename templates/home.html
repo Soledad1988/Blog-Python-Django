@@ -22,23 +22,33 @@
 
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link active" href="{% url 'index' %}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Artículos</a>
-                </li>
+                    <a class="nav-link" href="{% url 'apps.articulo:articulos' %}">Artículos</a>
+                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Otros</a>
                 </li>
             </ul>
 
-            <a class="btn-gradient" href="#">Regístrate</a>
+             {% if user.is_authenticated %}
+            <form class="nav-icon position-relative text-decoration-none" method="post">
+                    {% csrf_token %}
+                     <button type="submit"><span class="position-absolute top-200 left-100 translate-middle badge rounded-pill bg-light text-dark">{{ user.username }}: Cerrar Sesión</span></button>
+            </form>
+            {% else %}
+                 <a class="nav-icon position-relative text-decoration-none" href="{% url 'apps.usuario:login' %}?next={{ request.path }}">
+                    <span class="position-absolute top-200 left-100 translate-middle badge rounded-pill bg-light text-dark">Iniciar Sesión</span>
+                </a>
+            {% endif %}
         </div>
     </nav>
 
+    {% block hero_section %}
     <!-- CAROUSEL -->
     <div id="carouselNoticias" class="carousel slide" data-bs-ride="carousel">
         
@@ -91,6 +101,7 @@
         <h1>Bienvenidos</h1>
         <button class="btn-start">Comencemos</button>
     </section>
+    {% endblock %}
 
    <!-- CONTENIDO DINÁMICO -->
     <main class="container mt-5">

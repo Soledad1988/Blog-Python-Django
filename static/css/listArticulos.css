@@ -1,0 +1,138 @@
+/* ===========================
+   FONDO GENERAL (como el HERO)
+=========================== */
+
+body {
+    background: linear-gradient(to bottom, #0c0c0c, #4d3ebc, #5f4bff);
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+
+/* ===========================
+   TÍTULO PRINCIPAL
+=========================== */
+
+.section-title {
+    font-size: 55px;
+    font-weight: 800;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+}
+
+
+/* ===========================
+   BOTONES DE ORDEN
+=========================== */
+
+.btn-success,
+.btn-outline-success {
+    border-radius: 25px;
+    padding: 8px 28px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    border: none;
+}
+
+.btn-success {
+    background: linear-gradient(to right, #5f4bff, #dd86f8);
+    color: white;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.15);
+}
+
+.btn-outline-success {
+    border: 2px solid #ffffff;
+    color: white;
+}
+
+.btn-outline-success:hover {
+    background: linear-gradient(to right, #5f4bff, #dd86f8);
+    border-color: transparent;
+    color: white;
+}
+
+
+/* ===========================
+   TARJETAS DE ARTÍCULOS
+=========================== */
+
+.article-card {
+    background: rgba(255, 255, 255, 0.12); /* Brilloso */
+    border-radius: 22px;
+    overflow: hidden;
+    transition: 0.35s ease;
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(6px);
+    color: white;
+}
+
+.article-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 35px rgba(221,134,248,0.5);
+}
+
+
+/* Imagen */
+.article-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+
+/* Cuerpo */
+.article-body {
+    padding: 20px;
+}
+
+.article-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.article-desc {
+    color: #f1f1f1;
+    font-size: 15px;
+    margin-bottom: 18px;
+    line-height: 1.5;
+}
+
+
+/* Comentarios */
+.comments-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 18px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* Botón Leer más */
+.btn-read {
+    display: inline-block;
+    background: white;
+    color: #5f4bff;
+    padding: 10px 22px;
+    border-radius: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.btn-read:hover {
+    background: linear-gradient(to right, #5f4bff, #dd86f8);
+    color: white;
+    transform: translateY(-2px);
+}
