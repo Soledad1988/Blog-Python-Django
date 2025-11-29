@@ -55,7 +55,7 @@ class ArticuloDetailView(DetailView):
             comentario.usuario = request.user
             comentario.articulo_id = self.kwargs['id']
             comentario.save()
-            return redirect('apps.articulo:articulo_detalle', id=self.kwargs['id'])
+            return redirect('apps.articulo:articuloDetalle', id=self.kwargs['id'])
         else:
             context = self.get_context_data(**kwargs)
             context['form'] = form
@@ -87,7 +87,7 @@ class ArticuloUpdateView(LoginRequiredMixin, UpdateView):
 #Articulo borrar
 class ArticuloDeleteView(DeleteView):
     model = Articulo
-    template_name = 'articulo/articulo_eliminar.html'
+    template_name = 'articulo/eliminarArticulo.html'
 
     def get_success_url(self):
         messages.success(self.request, '¡Borrado con éxito!')
@@ -95,7 +95,7 @@ class ArticuloDeleteView(DeleteView):
 
 class ArticuloPorCategoriaView(ListView):
     model = Articulo
-    template_name = 'articulo/articulos_por_categoria.html'
+    template_name = 'articulo/articulosPorCategoria.html'
     context_object_name = 'articulos'
 
     def get_queryset(self):
@@ -105,7 +105,7 @@ class ArticuloPorCategoriaView(ListView):
 class CategoriaCreateView(LoginRequiredMixin, CreateView):
     model = Categoria
     form_class = NuevaCategoriaForm
-    template_name = 'articulo/crear_categoria.html'
+    template_name = 'articulo/crearCategoria.html'
 
     def get_success_url(self):
         messages.success(self.request, '¡Categoría creada con éxito!')
@@ -113,14 +113,14 @@ class CategoriaCreateView(LoginRequiredMixin, CreateView):
         if next_url:
             return next_url
         else:
-            return reverse_lazy('apps.articulo:articulo_crear')
+            return reverse_lazy('apps.articulo:crearArticulo')
 
 class CategoriaListView(ListView):
     model = Categoria
     template_name = 'articulo/listCategoria.html'
     context_object_name = 'categorias'
 
-class CategoriaDeleteView(LoginRequiredMixin, DeleteView):
+class CategoriaDeleteView(DeleteView):
     model = Categoria
-    template_name = 'articulo/categoria_eliminar.html'
+    template_name = 'articulo/eliminarCategoria.html'
     success_url = reverse_lazy('apps.articulo:listCategoria')

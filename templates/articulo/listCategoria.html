@@ -1,36 +1,57 @@
 {% extends 'home.html' %}
 {% load static %}
 
-{% block title %}Categoria | Blog{% endblock %}
+{% block title %}Categorías | Blog{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/listArticulos.css' %}">
+<link rel="stylesheet" href="{% static 'css/categorias.css' %}">
 {% endblock %}
 
 {% block hero_section %}{% endblock %}
 
 {% block content %}
 <section class="container py-5">
-    <div class="row text-center pt-3">
-        <div class="col-lg-6 m-auto">
-            <h1 class="h1">Categorías</h1>
-            <p>
-                Desde aquí puedes elegir los artículos según la categoría que desees
-            </p>
-        </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h1 m-0">Categorías</h1>
+        <a href="{% url 'apps.articulo:crearCategoria' %}" class="btn btn-primary">
+            + Agregar Categoría
+        </a>
     </div>
-    <div class="row">
-  
-        <div class="col-md-12 p-5">
-            <h4 class="text-center mt-3 mb-3">{{ categoria.nombre | capfirst }}</h4>
-                <p class="text-center"><a class="btn btn-success" href="">Ingresá</a></p>
 
-                <p class="text-center"><a class="btn btn-warning" href="">Eliminar</a></p>
-           
+    <div class="table-responsive shadow rounded bg-white p-3">
+        <table class="table table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
 
-            <h3 class="text-center mt-3 mb-3">No hay categorías</h3>
+            <tbody>
+                {% for categoria in categorias %}
+                <tr>
+                    <td class="fw-semibold">{{ categoria.nombre|capfirst }}</td>
+                    <td class="text-center">
+                        <a href="{% url 'apps.articulo:articulosPorCategoria' pk=categoria.pk %}" 
+                           class="btn btn-sm btn-success me-2">
+                            Ver artículos
+                        </a>
 
-        </div>
+                        <a href="{% url 'apps.articulo:eliminarCategoria' pk=categoria.pk %}" 
+                           class="btn btn-sm btn-danger">
+                            🗑 Eliminar
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2" class="text-center py-4">No hay categorías creadas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
+
 </section>
 {% endblock %}

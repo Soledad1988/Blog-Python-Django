@@ -10,47 +10,67 @@
 {% block hero_section %}{% endblock %}
 
 {% block content %}
-<section class="container py-5">
 
-    <h1 class="section-title text-center mb-5">Últimos Artículos</h1>
+<section class="container py-5" >
 
-    <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
-        <a class="btn btn-success btn-lg" href="?orden=reciente">Más reciente</a>
-        <a class="btn btn-success btn-lg" href="?orden=antiguo">Más antiguo</a>
-        <a class="btn btn-outline-success btn-lg" href="{% url 'apps.articulo:listCategoria' %}">Categorías</a>
+    <!-- TÍTULO -->
+    <h1 class="section-title text-center">Artículos del Blog</h1>
+
+    <!-- BARRA DE ACCIONES -->
+    <div class="action-bar d-flex flex-wrap justify-content-center gap-3 mb-5">
+
+        <!-- Orden -->
+        <a class="btn btn-orden" href="{% url 'apps.articulo:articulos' %}?orden=reciente">Más reciente</a>
+        <a class="btn btn-orden" href="{% url 'apps.articulo:articulos' %}?orden=antiguo">Más antiguo</a>
+
+        <!-- Categorías -->
+        <a class="btn btn-outline" href="{% url 'apps.articulo:listCategoria' %}">Categorías</a>
+
+        <!-- Crear Artículo y Categoría -->
+        <a class="btn btn-primary-action" href="{% url 'apps.articulo:crearArticulo' %}">
+            ➕ Crear artículo
+        </a>
+
+        <a class="btn btn-primary-action" href="{% url 'apps.articulo:crearCategoria' %}">
+            📂 Nueva categoría
+        </a>
     </div>
 
-    <div class="row g-4">
+    <!-- LISTADO DE ARTÍCULOS -->
+    <div class="row g-4" >
+        {% for articulo in articulos %}
+        <div class="col-12 col-md-4">
 
-        {% for art in articulos %}
-        <div class="col-md-4">
-            <div class="article-card shadow-sm">
+            <div class="art-card p-4 text-center">
 
-                <img src="{{ art.imagen.url }}" class="article-img" alt="Imagen del artículo">
+                <!-- Imagen -->
+                <img src="{{ articulo.imagen.url }}" 
+                     class="art-img mb-3" 
+                     alt="Imagen del artículo">
 
-                <div class="article-body">
-                    <h3 class="article-title">{{ art.titulo|capfirst }}</h3>
+                <!-- Título -->
+                <h3 class="art-title">{{ articulo.titulo|capfirst }}</h3>
 
-                    <p class="article-desc">
-                        {{ art.resumen|truncatechars:120 }}
-                    </p>
+                <!-- Fecha -->
+                <p class="art-date">Publicado: {{ articulo.fecha_publicacion }}</p>
 
-                    <span class="comments-badge">
-                        💬 {{ art.comentarios_count }} comentarios
-                    </span>
+                <!-- Resumen -->
+                <p class="art-summary">{{ articulo.resumen }}</p>
 
-                    <div class="mt-3">
-                        <a href="{% url 'apps.articulo:articulo_detalle' art.id %}" class="btn-read">Leer más</a>
-                    </div>
-                </div>
+                <!-- Botón -->
+                <a class="btn btn-read mt-2" href="{% url 'apps.articulo:articuloDetalle' articulo.id %}">
+                    Leer más
+                </a>
 
             </div>
+
         </div>
         {% empty %}
-            <p class="text-center">No hay artículos disponibles.</p>
+        <p class="text-center text-light fs-5">Todavía no hay artículos publicados.</p>
         {% endfor %}
-
     </div>
 
 </section>
+
 {% endblock %}
+

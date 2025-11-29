@@ -1,0 +1,57 @@
+/* ESTILO GENERAL OSCURO */
+body {
+    background: linear-gradient(135deg, #0d0d0d, #1a0027);
+    min-height: 100vh;
+    color: #eee;
+}
+
+/* HERO DEL FORM */
+.form-hero {
+    text-align: center;
+    padding: 60px 0;
+    color: white;
+}
+
+.form-hero h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.form-hero p {
+    font-size: 1.1rem;
+    opacity: 0.85;
+}
+
+/* CARD DEL FORM */
+.form-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.form-card {
+    background: #121212;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 18px;
+    box-shadow: 0 0 25px rgba(155, 80, 255, 0.25);
+}
+
+/* BOTÓN */
+.btn-submit {
+    background: linear-gradient(135deg, #8e2de2, #4a00e0);
+    padding: 10px 25px;
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 30px;
+    transition: .3s;
+}
+
+.btn-submit:hover {
+    background: #8e2de2;
+    box-shadow: 0 0 20px rgba(155, 80, 255, 0.5);
+}

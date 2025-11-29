@@ -1,138 +1,119 @@
-/* ===========================
-   FONDO GENERAL (como el HERO)
-=========================== */
-
-body {
-    background: linear-gradient(to bottom, #0c0c0c, #4d3ebc, #5f4bff);
-    color: white;
-    font-family: 'Inter', sans-serif;
-}
-
-
-/* ===========================
-   TÍTULO PRINCIPAL
-=========================== */
-
+/* ------------------------------
+   CONTENEDOR GENERAL
+--------------------------------*/
 .section-title {
-    font-size: 55px;
-    font-weight: 800;
-    text-align: center;
-    color: white;
-    text-transform: uppercase;
-    margin-bottom: 50px;
-    letter-spacing: 2px;
+    color: #5f4bff;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 35px;
 }
 
-
-/* ===========================
-   BOTONES DE ORDEN
-=========================== */
-
-.btn-success,
-.btn-outline-success {
-    border-radius: 25px;
-    padding: 8px 28px;
+/* ------------------------------
+   ACTION BAR
+--------------------------------*/
+.action-bar .btn {
+    padding: 8px 18px;
+    border-radius: 20px;
     font-weight: 600;
-    transition: 0.3s ease;
-    border: none;
+    font-size: 0.95rem;
 }
 
-.btn-success {
+/* Botones de orden */
+.btn-orden {
+    background: #1a1a1a;
+    color: #dcdcdc;
+    border: 1px solid #333;
+}
+
+.btn-orden:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* Botón outline */
+.btn-outline {
+    color: #dcdcdc;
+    border: 1px solid #5f4bff;
+}
+
+.btn-outline:hover {
+    background: #5f4bff;
+    color: white;
+}
+
+/* Botones principales */
+.btn-primary-action {
     background: linear-gradient(to right, #5f4bff, #dd86f8);
     color: white;
+    border-radius: 20px;
+    padding: 8px 22px;
+    font-weight: 600;
 }
 
-.btn-success:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.15);
-}
-
-.btn-outline-success {
-    border: 2px solid #ffffff;
-    color: white;
-}
-
-.btn-outline-success:hover {
-    background: linear-gradient(to right, #5f4bff, #dd86f8);
-    border-color: transparent;
-    color: white;
+.btn-primary-action:hover {
+    opacity: 0.9;
 }
 
 
-/* ===========================
+/* ------------------------------
    TARJETAS DE ARTÍCULOS
-=========================== */
-
-.article-card {
-    background: rgba(255, 255, 255, 0.12); /* Brilloso */
-    border-radius: 22px;
-    overflow: hidden;
-    transition: 0.35s ease;
-    border: 1px solid rgba(255,255,255,0.25);
-    backdrop-filter: blur(6px);
-    color: white;
+--------------------------------*/
+.art-card {
+    background: #111;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: 1px solid #2a2a2a;
 }
 
-.article-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 35px rgba(221,134,248,0.5);
+.art-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.55);
 }
-
 
 /* Imagen */
-.article-img {
+.art-img {
     width: 100%;
-    height: 220px;
+    height: 180px;
     object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #2b2b2b;
 }
 
-
-/* Cuerpo */
-.article-body {
-    padding: 20px;
-}
-
-.article-title {
-    font-size: 24px;
+/* Título */
+.art-title {
+    color: #fff;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: white;
-    margin-bottom: 12px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-transform: capitalize;
 }
 
-.article-desc {
-    color: #f1f1f1;
-    font-size: 15px;
-    margin-bottom: 18px;
-    line-height: 1.5;
+/* Fecha */
+.art-date {
+    color: #b5b5b5;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
 }
 
-
-/* Comentarios */
-.comments-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.25);
-    color: #ffffff;
-    padding: 6px 14px;
-    border-radius: 18px;
-    font-size: 13px;
-    font-weight: 600;
+/* Resumen */
+.art-summary {
+    color: #d0d0d0;
+    font-size: 0.95rem;
+    min-height: 65px;
 }
 
-
-/* Botón Leer más */
+/* Botón Leer Más */
 .btn-read {
-    display: inline-block;
-    background: white;
-    color: #5f4bff;
-    padding: 10px 22px;
+    background: linear-gradient(to right, #5f4bff, #dd86f8);
+    color: #fff;
+    padding: 7px 20px;
     border-radius: 20px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: 0.25s ease;
+    font-weight: 600;
 }
 
 .btn-read:hover {
-    background: linear-gradient(to right, #5f4bff, #dd86f8);
-    color: white;
-    transform: translateY(-2px);
+    opacity: 0.9;
 }
