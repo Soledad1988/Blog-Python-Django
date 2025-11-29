@@ -1,0 +1,73 @@
+/* Sección HERO */
+.hero-nosotros {
+    height: 55vh;
+    background: linear-gradient(to bottom, #0c0c0c, #4d3ebc, #5f4bff);
+    color: white;
+}
+
+.hero-nosotros h1 {
+    font-size: 70px;
+    font-weight: 700;
+}
+
+.hero-nosotros .subtitulo {
+    font-size: 20px;
+    margin-top: 10px;
+    opacity: 0.85;
+}
+
+/* Texto introductorio */
+.nosotros-intro .titulo {
+    color: #fff;
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.nosotros-intro .texto {
+    font-size: 18px;
+    color: #dcdcdc;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Tarjetas del equipo */
+.card-persona {
+    background: #111;
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid #1f1f1f;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.card-persona:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 4px 22px rgba(95, 75, 255, 0.35);
+}
+
+.persona-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #5f4bff;
+    margin-bottom: 15px;
+}
+
+.persona-nombre {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.persona-rol {
+    color: #dd86f8;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.persona-desc {
+    color: #c0c0c0;
+    font-size: 15px;
+    line-height: 1.4;
+}

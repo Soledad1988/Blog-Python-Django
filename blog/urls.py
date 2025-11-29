@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from .views import index
+from .views import index, nosotros
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -27,6 +27,7 @@ urlpatterns = [
     path("", index, name='index'),
     path("articulos/", include("apps.articulo.urls")),
     path('comentario/', include('apps.comentario.urls')),
+    path("nosotros/", nosotros, name="nosotros"),
     path('', include('apps.usuario.urls')),
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns() 

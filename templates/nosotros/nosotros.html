@@ -1,0 +1,93 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}Nosotros | Blog Tech{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/nosotros.css' %}">
+{% endblock %}
+
+{% block hero_section %}
+<section class="hero-nosotros d-flex flex-column justify-content-center align-items-center text-center">
+    <h1>Sobre Nosotros</h1>
+    <p class="subtitulo">Un equipo apasionado por la tecnología, las tendencias y la innovación.</p>
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+
+    <div class="nosotros-intro text-center mb-5">
+        <h2 class="titulo">Nuestro Proyecto</h2>
+        <p class="texto">
+            Somos un blog colaborativo dedicado a compartir noticias, análisis y tendencias del mundo informático.
+            Nuestro objetivo es informar, enseñar y acercar la tecnología a todos los niveles.
+            Actualizamos contenido de forma constante para mantenerte siempre al día.
+        </p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+        <!-- Persona 1 -->
+        <div class="col-md-4">
+            <div class="card-persona text-center">
+                <img src="{% static 'img/team1.jpg' %}" class="persona-img" alt="Foto integrante">
+                <h3 class="persona-nombre">Brenda</h3>
+                <p class="persona-rol">Data Analyst & Redactora</p>
+                <p class="persona-desc">
+                    Especialista en análisis de datos y creación de dashboards. Apasionada por compartir conocimiento y explicar tendencias.
+                </p>
+            </div>
+        </div>
+
+        <!-- Persona 2 -->
+        <div class="col-md-4">
+            <div class="card-persona text-center">
+                <img src="{% static 'img/team2.jpg' %}" class="persona-img" alt="Foto integrante">
+                <h3 class="persona-nombre">Lucas</h3>
+                <p class="persona-rol">Desarrollador Full Stack</p>
+                <p class="persona-desc">
+                    Desarrolla nuestras herramientas internas y prototipos. Aporta su visión técnica a cada artículo.
+                </p>
+            </div>
+        </div>
+
+        <!-- Persona 3 -->
+        <div class="col-md-4">
+            <div class="card-persona text-center">
+                <img src="{% static 'img/team3.jpg' %}" class="persona-img" alt="Foto integrante">
+                <h3 class="persona-nombre">Ana</h3>
+                <p class="persona-rol">Editora de Contenidos</p>
+                <p class="persona-desc">
+                    Se encarga de la curaduría, estilo editorial y planificación de contenidos semanales.
+                </p>
+            </div>
+        </div>
+
+        <!-- Persona 4 -->
+        <div class="col-md-4">
+            <div class="card-persona text-center">
+                <img src="{% static 'img/team4.jpg' %}" class="persona-img" alt="Foto integrante">
+                <h3 class="persona-nombre">Julián</h3>
+                <p class="persona-rol">Especialista en Hardware</p>
+                <p class="persona-desc">
+                    Comparte análisis detallados sobre componentes, dispositivos y nuevas tecnologías.
+                </p>
+            </div>
+        </div>
+
+        <!-- Persona 5 -->
+        <div class="col-md-4">
+            <div class="card-persona text-center">
+                <img src="{% static 'img/team5.jpg' %}" class="persona-img" alt="Foto integrante">
+                <h3 class="persona-nombre">María</h3>
+                <p class="persona-rol">Research & Tendencias</p>
+                <p class="persona-desc">
+                    Investiga nuevas herramientas, inteligencia artificial y tendencias globales del sector.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
