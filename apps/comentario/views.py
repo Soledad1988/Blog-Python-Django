@@ -63,7 +63,7 @@ class AgregarComentarioView(View):
 
 class DeleteComentario(DeleteView):
     model = Comentario
-    template_name = 'comentario/eliminarComentario.html'
+    #template_name = 'comentario/eliminarComentario.html'
     
     def get_success_url(self):
         messages.success(self.request, '¡Borrado con éxito!')

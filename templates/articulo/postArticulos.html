@@ -51,12 +51,15 @@
                             </div>
 
                             <div class="col d-grid">
-                                <a href="{% url 'apps.articulo:articuloActualizar' pk=articulo.pk %}" class="btn btn-outline-primary">Editar</a>
+                                <a href="{% url 'apps.articulo:eliminarArticulo' articulo.pk %}" class="btn btn-outline-primary">Editar</a>
                             </div>
 
-                            <div class="col d-grid">
-                                <a href="{% url 'apps.articulo:eliminarArticulo' pk=articulo.pk %}" class="btn btn-outline-danger">Eliminar</a>
-                            </div>
+                             <div class="col d-grid">
+                               <a class="btn btn-outline-danger eliminar-articulo-btn"
+                                    data-url="{% url 'apps.articulo:eliminarArticulo' articulo.pk %}">
+                                    Eliminar
+                                </a>
+                             </div>
                         </div>
 
                     </div>
@@ -86,7 +89,8 @@
                 <p class="comment-text">{{ comentario.texto }}</p>
 
                 <div class="comment-actions">
-                    <a class="btn btn-sm btn-outline-danger" href="{% url 'apps.comentario:eliminarComentario' comentario.pk %}">
+                    <a class="btn btn-danger eliminar-comentario-btn"
+                        data-url="{% url 'apps.comentario:eliminarComentario' comentario.pk %}">
                         Eliminar
                     </a>
                 </div>
@@ -125,4 +129,4 @@
     </div>
 </div>
 
-{% endblock %}
+{% endblock %}  <!-- AHORA ESTÁ CERRADO -->

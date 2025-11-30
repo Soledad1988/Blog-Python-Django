@@ -8,7 +8,9 @@ urlpatterns = [
     path('articulos/<int:id>/', ArticuloDetailView.as_view(), name="articuloDetalle"),
     path('articulo/crear/', ArticuloCreateView.as_view(), name='crearArticulo'),
     path('articulos/<int:pk>/actualizar/', ArticuloUpdateView.as_view(), name='articuloActualizar'),
-    path('articulos/<int:pk>/eliminar/', ArticuloDeleteView.as_view(), name='eliminarArticulo'),
+     #path('articulos/<int:pk>/eliminar/', ArticuloDeleteView.as_view(), name='eliminarArticulo'),
+
+    path('eliminar/<int:pk>/', ArticuloDeleteView.as_view(), name='eliminarArticulo'),
 
     path('categoria/', CategoriaListView.as_view(), name='listCategoria'),
     path('categoria/<int:pk>/articulos/', ArticuloPorCategoriaView.as_view(), name='articulosPorCategoria'),

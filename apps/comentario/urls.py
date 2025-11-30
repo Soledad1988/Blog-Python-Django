@@ -9,4 +9,7 @@ urlpatterns = [
     path('addComentario/', AgregarComentarioView.as_view(), name='addComentario'),
     path('eliminarComentario/<int:pk>/', DeleteComentario.as_view(), name='eliminarComentario'),
     path('detalleArticulo/<int:articulo_id>/', DetalleArticuloView.as_view(), name='detalleArticulo'),
+
+     # 👉 ESTA ES LA QUE USA eliminarComentario.js
+    path('eliminarComentario/<int:pk>/', DeleteComentario.as_view(), name='eliminarComentario'),
 ]

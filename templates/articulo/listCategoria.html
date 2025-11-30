@@ -37,9 +37,13 @@
                            class="btn btn-sm btn-success me-2">
                             Ver artículos
                         </a>
-
+                        <!--
                         <a href="{% url 'apps.articulo:eliminarCategoria' pk=categoria.pk %}" 
                            class="btn btn-sm btn-danger">
+                            🗑 Eliminar
+                        </a>-->
+                        <a class="btn btn-danger eliminar-categoria-btn"
+                            data-url="{% url 'apps.articulo:eliminarCategoria' pk=categoria.pk %}">
                             🗑 Eliminar
                         </a>
                     </td>

@@ -87,11 +87,12 @@ class ArticuloUpdateView(LoginRequiredMixin, UpdateView):
 #Articulo borrar
 class ArticuloDeleteView(DeleteView):
     model = Articulo
-    template_name = 'articulo/eliminarArticulo.html'
+    #template_name = 'articulo/eliminarArticulo.html' voy a utilizar sweet alert
 
     def get_success_url(self):
         messages.success(self.request, '¡Borrado con éxito!')
         return reverse_lazy('apps.articulo:articulos')
+    
 
 class ArticuloPorCategoriaView(ListView):
     model = Articulo
@@ -122,5 +123,5 @@ class CategoriaListView(ListView):
 
 class CategoriaDeleteView(DeleteView):
     model = Categoria
-    template_name = 'articulo/eliminarCategoria.html'
+    #template_name = 'articulo/eliminarCategoria.html'
     success_url = reverse_lazy('apps.articulo:listCategoria')

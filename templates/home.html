@@ -31,7 +31,7 @@
                     <a class="nav-link" href="{% url 'apps.articulo:articulos' %}">Artículos</a>
                  </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
+                    <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
                 </li>
             </ul>
 
@@ -102,6 +102,7 @@
         <button class="btn-start">Comencemos</button>
     </section>
     {% endblock %}
+    
 
    <!-- CONTENIDO DINÁMICO -->
     <main class="container mt-5">
@@ -132,6 +133,7 @@
         {% endfor %}
 
         {% endblock %}
+
 
     </main>
 
@@ -186,7 +188,14 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
+    <!-- Sweetalert -->
+    <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+    <script src="{% static 'js/utils/notificacionSwal.js' %}"></script>
 
+    <!-- Js personalizados-->
+    <script src="{% static 'js/eliminarArticulos.js' %}"></script>
+    <script src="{% static 'js/eliminarComentario.js' %}"></script>
+     <script src="{% static 'js/eliminarCategoria.js' %}"></script>
     {% block scripts %}
     {% endblock %}
 

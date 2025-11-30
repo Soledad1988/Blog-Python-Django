@@ -1,0 +1,61 @@
+/* --------------------------
+   CONTENEDOR GENERAL
+--------------------------- */
+.container-contacto {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+
+/* --------------------------
+   CAMPOS DEL FORMULARIO
+--------------------------- */
+.container-contacto input,
+.container-contacto textarea,
+.container-contacto select {
+    border: 1px solid #dcdcdc !important;
+    border-radius: 8px !important;
+    background: #fafafa;
+    padding: 12px 15px !important;
+    font-size: 1rem !important;
+    transition: all .25s ease;
+}
+
+/* Focus */
+.container-contacto input:focus,
+.container-contacto textarea:focus,
+.container-contacto select:focus {
+    border-color: #4caf50 !important;
+    background: #fff !important;
+    box-shadow: 0 0 6px rgba(76,175,80,0.3) !important;
+}
+
+/* Textarea menos alta */
+.container-contacto textarea {
+    min-height: 120px !important;
+    max-height: 200px !important;
+    resize: vertical;
+}
+
+/* Espaciado entre campos */
+.container-contacto .form-group,
+.container-contacto .form-control {
+    margin-bottom: 18px;
+}
+
+/* Botón */
+.container-contacto .btn-success {
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: all .25s ease;
+    background-color: #4caf50;
+    border: none;
+}
+
+.container-contacto .btn-success:hover {
+    background-color: #43a047;
+    box-shadow: 0 4px 12px rgba(76,175,80,0.35);
+}

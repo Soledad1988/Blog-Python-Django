@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "apps.articulo",
     'apps.usuario',
     'apps.comentario',
+    'apps.contacto',
 
     "crispy_forms",
     "crispy_bootstrap5",
