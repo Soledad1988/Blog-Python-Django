@@ -1,5 +1,6 @@
 {% extends 'home.html' %}
 {% load static %}
+{% load colaborador_tags %}
 {% load crispy_forms_tags %}
 
 {% block extra_css %}
@@ -44,22 +45,27 @@
                         <h5>Contenido</h5>
                         <p class="post-body">{{ articulo.contenido|capfirst }}</p>
 
-                        <!-- Acciones -->
+                      <!-- Acciones -->
                         <div class="row pt-3">
                             <div class="col d-grid">
                                 <a class="btn btn-success" href="#comentario">Comentar</a>
                             </div>
 
-                            <div class="col d-grid">
-                                <a href="{% url 'apps.articulo:eliminarArticulo' articulo.pk %}" class="btn btn-outline-primary">Editar</a>
-                            </div>
+                            {% if user.is_superuser or request.user|has_group:"Colaborador" %}
+                                <div class="col d-grid">
+                                    <a href="{% url 'apps.articulo:editarArticulo' articulo.pk %}"
+                                    class="btn btn-outline-primary">
+                                        Editar
+                                    </a>
+                                </div>
 
-                             <div class="col d-grid">
-                               <a class="btn btn-outline-danger eliminar-articulo-btn"
+                                <div class="col d-grid">
+                                    <a class="btn btn-outline-danger eliminar-articulo-btn"
                                     data-url="{% url 'apps.articulo:eliminarArticulo' articulo.pk %}">
-                                    Eliminar
-                                </a>
-                             </div>
+                                        Eliminar
+                                    </a>
+                                </div>
+                            {% endif %}
                         </div>
 
                     </div>
@@ -88,12 +94,14 @@
 
                 <p class="comment-text">{{ comentario.texto }}</p>
 
+                {% if user.is_superuser or request.user|has_group:"Colaborador" %}
                 <div class="comment-actions">
                     <a class="btn btn-danger eliminar-comentario-btn"
                         data-url="{% url 'apps.comentario:eliminarComentario' comentario.pk %}">
                         Eliminar
                     </a>
                 </div>
+                {% endif %}
 
             </div>
             {% empty %}
@@ -115,9 +123,8 @@
             {% csrf_token %}
 
             {% if user.is_authenticated %}
-                {{ form|crispy }}
-                <button class="btn btn-success mt-3" type="submit">Comentar</button>
-
+            {{ form|crispy }}
+            <button class="btn btn-success mt-3" type="submit">Comentar</button>
             {% else %}
                 <h5>Debes iniciar sesión para comentar</h5>
                 <a class="btn btn-success" href="{% url 'apps.usuario:login' %}?next={{ request.path }}#comentario">

@@ -1,16 +1,14 @@
 {% extends "home.html" %}
-{% load colaborador_tags %}
 {% load static %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/usuarios.css' %}">
 {% endblock %}
-
+{% block hero_section %}{% endblock %}
 {% block content %}
 
 <div class="usuarios-container">
 
-    {% if user.is_superuser or request.user|has_group:"Colaborador" %}
 
         <h2 class="usuarios-title">Lista de usuarios</h2>
 
@@ -24,16 +22,16 @@
                         {{ usuario.username }}
                     </span>
 
-                    {% if usuario.username == request.user.username %}
+                   
                         <span class="usuario-usted">(Usted)</span>
-                    {% endif %}
+              
                 </div>
 
-                {% if user.is_superuser or request.user|has_group:"Colaborador" %}
-                    <a href="{% url 'apps.usuario:usuario_delete' pk=usuario.id %}" class="btn-eliminar">
+                
+                    <a href="{% url 'apps.usuario:eliminarUsuario' pk=usuario.id %}" class="btn-eliminar">
                         Eliminar
                     </a>
-                {% endif %}
+         
 
             </div>
             {% empty %}
@@ -42,12 +40,11 @@
 
         </div>
 
-    {% else %}
+
         <div class="usuarios-restringido">
             <h3>Acceso restringido</h3>
             <p>Solo usuarios con permisos pueden acceder a esta página.</p>
         </div>
-    {% endif %}
 
 </div>
 

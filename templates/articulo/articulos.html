@@ -1,5 +1,6 @@
 {% extends 'home.html' %}
 {% load static %}
+{% load colaborador_tags %}
 
 {% block title %}Artículos | Blog{% endblock %}
 
@@ -24,7 +25,7 @@
             🔽 Más reciente</a>
         <a class="btn btn-orden" href="{% url 'apps.articulo:articulos' %}?orden=antiguo">
             🔼 Más antiguo</a>
-
+        {% if user.is_superuser or request.user|has_group:"Colaborador"  %}   
         <!-- Categorías -->
         <a class="btn btn-orden" href="{% url 'apps.articulo:listCategoria' %}">
             📚 Categorías</a>
@@ -37,6 +38,7 @@
         <a class="btn btn-orden" href="{% url 'apps.articulo:crearCategoria' %}">
             📂 Nueva categoría
         </a>
+        {% endif %}
     </div>
 
     <!-- LISTADO DE ARTÍCULOS -->

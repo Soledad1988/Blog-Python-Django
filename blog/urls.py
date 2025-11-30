@@ -26,6 +26,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index, name='index'),
     path("articulos/", include("apps.articulo.urls")),
+    path('registracion/', include('apps.usuario.urls')),
     path('comentario/', include('apps.comentario.urls')),
     path("nosotros/", nosotros, name="nosotros"),
     path('contacto/', include('apps.contacto.urls')),

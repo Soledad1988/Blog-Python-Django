@@ -1,14 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'home.html' %}
 {% load static %}
 
 {% block content %}
+<div class="logout-container">
+    <h2>Has cerrado sesión correctamente</h2>
 
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
+    <a class="btn btn-primary" href="{% url 'index' %}">Volver al inicio</a>
+</div>
 {% endblock %}
