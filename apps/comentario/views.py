@@ -23,7 +23,7 @@ class ComentarArticuloView(LoginRequiredMixin, View):
             comentario.articulo = articulo
             comentario.usuario = request.user
             comentario.save()
-            return redirect('leer_articulo', id=id)
+            return redirect('leerAticulo', id=id)
         return render(request, 'comentario/comentar.html', {'form': form, 'articulo': articulo})
 
 
@@ -35,7 +35,7 @@ class ListadoComentarioView(View):
             'comentarios': comentarios,
             'usuario': usuario,
         }
-        return render(request, 'comentario/listadoComentario.html', context)
+        return render(request, 'comentario/listComentario.html', context)
 
 
 class AgregarComentarioView(View):
@@ -46,7 +46,7 @@ class AgregarComentarioView(View):
             'form': form,
             'usuario': usuario,
         }
-        return render(request, 'comentario/agregarComentario.html', context)
+        return render(request, 'comentario/addComentario.html', context)
 
     def post(self, request):
         usuario = Usuario(usuario=request.user)
@@ -58,7 +58,7 @@ class AgregarComentarioView(View):
             'form': form,
             'usuario': usuario,
         }
-        return render(request, 'comentario/agregarComentario.html', context)
+        return render(request, 'comentario/addComentario.html', context)
 
 
 class DeleteComentario(DeleteView):
@@ -78,4 +78,4 @@ class DetalleArticuloView(View):
     def get(self, request, articulo_id):
         articulo = Articulo.objects.get(id=articulo_id)
         comentarios = Comentario.objects.filter(articulo=articulo)
-        return render(request, 'detalle_articulo.html', {'articulo': articulo, 'comentarios': comentarios})
+        return render(request, 'detalleArticulo.html', {'articulo': articulo, 'comentarios': comentarios})

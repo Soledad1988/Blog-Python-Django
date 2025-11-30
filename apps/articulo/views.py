@@ -35,9 +35,9 @@ class ArticuloListView(ListView):
 #Artículo individual
 class ArticuloDetailView(DetailView):
     model = Articulo
-    template_name = "articulo/post.html" 
-    success_url = 'articulos'
-    context_object_name = "articulos" 
+    template_name = "articulo/postArticulos.html" 
+    success_url = 'articulo'
+    context_object_name = "articulo" 
     pk_url_kwarg = "id" 
     queryset = Articulo.objects.all()
 

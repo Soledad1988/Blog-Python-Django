@@ -21,22 +21,32 @@
                 <!-- Imagen -->
                 <img src="{{ articulo.imagen.url }}" alt="Imagen" class="article-img">
 
-                <!-- Cuerpo -->
-                <div class="article-body">
-                    <h3 class="article-title">{{ articulo.titulo }}</h3>
+               <!-- Cuerpo -->
+            <div class="article-body">
+                <h3 class="article-title">{{ articulo.titulo }}</h3>
 
-                    <p class="article-desc">
-                        {{ articulo.resumen|truncatechars:120 }}
-                    </p>
+                <p class="article-desc">
+                    {{ articulo.resumen|truncatechars:120 }}
+                </p>
 
-                    <span class="comments-badge">
+                <!-- Badges -->
+                <div class="mb-2">
+                    <!-- Badge fecha -->
+                    <span class="badge bg-primary">
                         {{ articulo.fecha_publicacion|date:"d/m/Y" }}
                     </span>
 
-                    <br><br>
-
-                    <a href="#" class="btn-read">Leer más</a>
+                    <!-- Badge cantidad de comentarios -->
+                    <span class="badge bg-success">
+                        {{ articulo.comentarios.count }} comentarios
+                    </span>
                 </div>
+
+                <a href="{% url 'apps.articulo:articuloDetalle' articulo.id %}" class="btn btn-outline-primary">
+                    Leer más
+                </a>
+            </div>
+
 
             </div>
 

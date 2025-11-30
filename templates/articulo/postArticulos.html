@@ -1,0 +1,128 @@
+{% extends 'home.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/postArticulo.css' %}">
+{% endblock %}
+
+{% block title %}Artículo: {{ articulo.titulo|capfirst }}{% endblock %}
+
+{% block hero_section %}{% endblock %}
+
+{% block content %}
+
+<!-- ======== ARTÍCULO ======== -->
+<section class="bg-light">
+    <div class="container pb-5">
+        <div class="row">
+            
+            <!-- Imagen -->
+            <div class="col-lg-5 mt-5">
+                <div class="card post-image-card mb-3">
+                    {% if articulo.imagen %}
+                        <img class="card-img-top img-fluid post-image" src="{{ articulo.imagen.url }}" alt="{{ articulo.titulo }}">
+                    {% else %}
+                        <img class="card-img-top img-fluid post-image" src="{% static 'assets/img/banner_img_01.jpg' %}" alt="Imagen genérica">
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Contenido -->
+            <div class="col-lg-7 mt-5">
+                <div class="card post-content-card">
+                    <div class="card-body">
+
+                        <h1 class="h2 mb-3">{{ articulo.titulo|capfirst }}</h1>
+
+                        <p><strong>Categoría:</strong> {{ articulo.categoria|capfirst }}</p>
+
+                        <p><strong>Resumen:</strong> {{ articulo.resumen|capfirst }}</p>
+
+                        <hr>
+
+                        <h5>Contenido</h5>
+                        <p class="post-body">{{ articulo.contenido|capfirst }}</p>
+
+                        <!-- Acciones -->
+                        <div class="row pt-3">
+                            <div class="col d-grid">
+                                <a class="btn btn-success" href="#comentario">Comentar</a>
+                            </div>
+
+                            <div class="col d-grid">
+                                <a href="{% url 'apps.articulo:articuloActualizar' pk=articulo.pk %}" class="btn btn-outline-primary">Editar</a>
+                            </div>
+
+                            <div class="col d-grid">
+                                <a href="{% url 'apps.articulo:eliminarArticulo' pk=articulo.pk %}" class="btn btn-outline-danger">Eliminar</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Fin columna contenido -->
+
+        </div>
+    </div>
+</section>
+
+<!-- ======== COMENTARIOS ======== -->
+<div class="container py-5">
+    <div class="row py-4 justify-content-center">
+        <div class="col-md-8">
+
+            <h2 class="mb-4 text-center">Comentarios ({{ comentarios.count }})</h2>
+
+            {% for comentario in comentarios %}
+            <div class="comment-item">
+
+                <div class="comment-header">
+                    <strong>{{ comentario.usuario }}</strong>
+                    <span class="comment-date">{{ comentario.fecha|date:"d/m/Y H:i" }}</span>
+                </div>
+
+                <p class="comment-text">{{ comentario.texto }}</p>
+
+                <div class="comment-actions">
+                    <a class="btn btn-sm btn-outline-danger" href="{% url 'apps.comentario:eliminarComentario' comentario.pk %}">
+                        Eliminar
+                    </a>
+                </div>
+
+            </div>
+            {% empty %}
+            <p class="text-center text-muted">No hay comentarios aún. ¡Sé el primero!</p>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+<!-- ======== FORMULARIO DE COMENTARIO ======== -->
+<div class="container-fluid bg-light py-5">
+    <div class="col-md-6 m-auto text-center">
+        
+        <a id="comentario"></a>
+        <h3 class="mb-3">Deja tu comentario</h3>
+
+        <form method="POST" class="col-md-9 m-auto">
+            {% csrf_token %}
+
+            {% if user.is_authenticated %}
+                {{ form|crispy }}
+                <button class="btn btn-success mt-3" type="submit">Comentar</button>
+
+            {% else %}
+                <h5>Debes iniciar sesión para comentar</h5>
+                <a class="btn btn-success" href="{% url 'apps.usuario:login' %}?next={{ request.path }}#comentario">
+                    Iniciar sesión
+                </a>
+            {% endif %}
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}
