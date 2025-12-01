@@ -31,6 +31,7 @@ urlpatterns = [
     path("nosotros/", nosotros, name="nosotros"),
     path('contacto/', include('apps.contacto.urls')),
     path('', include('apps.usuario.urls')),
+    path('usuario/', include('apps.usuario.urls')),
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns() 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

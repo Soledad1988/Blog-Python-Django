@@ -26,14 +26,13 @@
                         <span class="usuario-usted">(Usted)</span>
               
                 </div>
-
-                
-                    <a href="{% url 'apps.usuario:eliminarUsuario' pk=usuario.id %}" class="btn-eliminar">
+                    
+                    <a class="btn btn-outline-danger eliminar-usuario-btn"
+                        data-url="{% url 'apps.usuario:eliminarUsuario' id=usuario.id %}">
                         Eliminar
                     </a>
-         
 
-            </div>
+               </div>
             {% empty %}
                 <p class="sin-usuarios">No hay usuarios registrados.</p>
             {% endfor %}
