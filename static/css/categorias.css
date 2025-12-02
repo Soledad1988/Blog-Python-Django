@@ -1,9 +1,6 @@
-/* --------------------------------------
-   Fondo general acorde al sitio
--------------------------------------- */
+/* Forzar fondo blanco en toda la vista */
 body {
-    background-color: #121212;
-    color: #eaeaea;
+    background: #ffffff !important;
 }
 
 /* --------------------------------------
@@ -12,46 +9,67 @@ body {
 .titulo-pagina {
     font-size: 2rem;
     font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.5px;
+    color: #3a3a3a;
 }
 
 /* --------------------------------------
-   Tarjeta de la tabla
+   Card contenedor de la tabla
 -------------------------------------- */
 .tabla-card {
-    background: #1a1a1a;
+    background: #ffffff;
     border-radius: 12px;
     padding: 1.5rem;
-    border: 1px solid #2b2b2b;
+    border: 1px solid #e8e8e8;
 }
 
 /* --------------------------------------
-   Tabla
+   Tabla LIMPIA (estilo moderno)
 -------------------------------------- */
-.table-dark {
-    background-color: #1a1a1a !important;
+.tabla-estilada {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
 }
 
-.table-dark thead tr {
-    background-color: #5f4bff !important;
+/* Cabecera */
+.tabla-estilada thead th {
+    background: #f8f4ff; /* violeta muy suave */
+    color: #6a0dad;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 2px solid #d7b6ff;
+    padding: 12px;
 }
 
-.table-dark tbody tr:hover {
-    background-color: #282828 !important;
+/* Filas */
+.tabla-estilada tbody tr {
+    border-bottom: 1px solid #e9d8ff; /* línea morada clara */
 }
 
-/* Texto de filas */
-.texto-categoria {
-    color: #e4e4e4;
+.tabla-estilada tbody tr:hover {
+    background: #faf5ff; /* hover suave */
+}
+
+.tabla-estilada td {
+    padding: 14px 10px;
+    color: #444;
     font-size: 1rem;
+}
+
+/* --------------------------------------
+   Texto de categorías
+-------------------------------------- */
+.texto-categoria {
+    font-weight: 500;
+    color: #333;
 }
 
 /* --------------------------------------
    Botones
 -------------------------------------- */
+
 .btn-gradient {
-    background: linear-gradient(to right, #5f4bff, #dd86f8);
+    background: linear-gradient(to right, #7a2cff, #c66bff);
     padding: 0.6rem 1.2rem;
     border-radius: 30px;
     font-weight: 600;
@@ -61,34 +79,33 @@ body {
 }
 
 .btn-gradient:hover {
-    opacity: 0.85;
+    opacity: 0.9;
     transform: translateY(-2px);
 }
 
-/* Botón outline claro */
 .btn-outline-light {
     border-radius: 20px;
-    padding: 0.45rem 1rem;
-    color: #fff;
-    border-color: #777;
+    padding: 0.4rem 1rem;
+    color: #6a0dad;
+    border: 1px solid #cfa9ff;
 }
 
 .btn-outline-light:hover {
-    background: #5f4bff;
-    border-color: #5f4bff;
+    background: #6a0dad;
+    color: white;
+    border-color: #6a0dad;
 }
 
-/* Botón eliminar */
 .btn-outline-danger {
     border-radius: 20px;
-    padding: 0.45rem 1rem;
-    color: #ff6b6b;
-    border-color: #ff6b6b;
+    padding: 0.4rem 1rem;
+    color: #d11a2a;
+    border: 1px solid #d11a2a;
 }
 
 .btn-outline-danger:hover {
-    background: #ff6b6b;
-    color: #121212;
+    background: #d11a2a;
+    color: white;
 }
 
 /* Columna de acciones */

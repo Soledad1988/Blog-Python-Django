@@ -15,4 +15,5 @@ urlpatterns = [
 
    # 👉 ESTA ES LA QUE USA eliminarUsuario.js
     path('eliminarUsuario/<int:id>/', UsuarioDeleteView.as_view(), name='eliminarUsuario'),
+
 ]

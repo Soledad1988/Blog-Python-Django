@@ -3,20 +3,21 @@
 {% load crispy_forms_tags %}
 
 <title>{% block title %} Registro de usuario {% endblock title %}</title>
+{% block hero_section %}{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<div class="container-fluid bg-light py-5">
-    <div class="col-md-6 m-auto text-center">
+<div class="container py-5">
+     <div class="col-md-6 m-auto text-center">
         <h1 class="h1">Recuperar contraseña</h1>
         <p>
             Sentimos que hayas olvidado tu contraseña, pero puedes recuperarla ingresando tu email.
         </p>
     </div>
-</div>
-
-<div class="container py-5">
     <div class="row py-5">
         <form action="{{ action_url }}" class="col-md-9 m-auto" method="POST" enctype="multipart/form-data">
             {% csrf_token %}

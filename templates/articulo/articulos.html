@@ -5,7 +5,7 @@
 {% block title %}Artículos | Blog{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/listArticulos.css' %}">
+<link rel="stylesheet" href="{% static 'css/listArticulos.css' %}?v=10">
 {% endblock %}
 
 {% block hero_section %}{% endblock %}
@@ -25,11 +25,10 @@
             🔽 Más reciente</a>
         <a class="btn btn-orden" href="{% url 'apps.articulo:articulos' %}?orden=antiguo">
             🔼 Más antiguo</a>
-        {% if user.is_superuser or request.user|has_group:"Colaborador"  %}   
         <!-- Categorías -->
         <a class="btn btn-orden" href="{% url 'apps.articulo:listCategoria' %}">
             📚 Categorías</a>
-
+        {% if user.is_superuser or request.user|has_group:"Colaborador"  %}   
         <!-- Crear Artículo y Categoría -->
         <a class="btn btn-orden" href="{% url 'apps.articulo:crearArticulo' %}">
             ➕ Crear artículo

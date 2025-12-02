@@ -1,23 +1,41 @@
 {% extends 'home.html' %}
 {% load static %}
 
+{% load static %}
+
+
 {% block hero_section %}{% endblock %}
-{% block contenido %}
-<section class="container py-5">
-    <div class="row text-center pt-3">
-        <div class="col-lg-6 m-auto">
-            <h1 class="h1">Artículos por categoría</h1>
-            <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.
-            </p>
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/listaPorCategoria.css' %}">
+
+<section class="articulos-section">
+    <div class="container">
+        <h1 class="titulo-seccion">Artículos por categoría</h1>
+        <p class="descripcion-seccion">
+            Explorá los artículos publicados dentro de esta categoría.
+        </p>
+
+        <div class="grid-articulos">
+            {% for articulo in articulos %}
+            <div class="card-articulo">
+
+                {% if articulo.imagen %}
+                <img class="card-img" src="{{ articulo.imagen.url }}" alt="{{ articulo.titulo }}">
+                {% else %}
+                <img class="card-img" src="{% static 'img/default.jpg' %}" alt="Imagen no disponible">
+                {% endif %}
+
+                <div class="card-info">
+                    <h3 class="card-titulo">{{ articulo.titulo|capfirst }}</h3>
+
+                    <a class="btn-ver" href="{% url 'apps.articulo:articuloDetalle' articulo.id %}">
+                        Ver artículo
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
         </div>
-    </div>
-    <div class="row">
-        {% for articulo in articulos %}
-        <h4 class="text-center mt-3 mb-3">{{ articulo.titulo | capfirst }}</h4>
-        <p class="text-center"><a class="btn btn-success" href="{% url 'apps.articulo:articuloDetalle' articulo.id %}">Ingresá</a>
-        {% endfor %}
     </div>
 </section>
 {% endblock %}

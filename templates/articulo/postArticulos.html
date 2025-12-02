@@ -3,19 +3,18 @@
 {% load colaborador_tags %}
 {% load crispy_forms_tags %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/postArticulo.css' %}">
-{% endblock %}
-
 {% block title %}Artículo: {{ articulo.titulo|capfirst }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/postArticulo.css' %}?v=10">
+{% endblock %}
 
 {% block hero_section %}{% endblock %}
 
 {% block content %}
 
-<section class="article-wrapper">
+<section>
     <div class="container py-5">
-
         <!-- ===== IMAGEN CENTRADA ===== -->
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center">

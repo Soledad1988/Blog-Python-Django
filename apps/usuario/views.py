@@ -9,6 +9,8 @@ from django.contrib.auth.models import Group
 from django.views.generic import CreateView, ListView, DeleteView
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
+from django.http import JsonResponse
+from django.contrib.auth.forms import PasswordResetForm
 
 class RegistrarUsuario(CreateView):
     template_name = 'registracion/registrar.html'
@@ -80,7 +82,7 @@ class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
 
 
 class MyPasswordResetView(PasswordResetView):
-    template_name = 'registration/recuperarContraseña.html'
+    template_name = 'registracion/recuperarContra.html'
 
     def get_success_url(self):
         messages.success(self.request, 'Se envió un email de recuperación. Revise su casilla de correo para recuperar su cuenta.')

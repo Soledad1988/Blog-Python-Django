@@ -1,10 +1,11 @@
 {% extends 'home.html' %}
 {% load static %}
+{% load colaborador_tags %}
 
 {% block title %}Categorías | Blog{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/categorias.css' %}">
+<link rel="stylesheet" href="{% static 'css/categorias.css' %}?v=10">
 {% endblock %}
 
 {% block hero_section %}{% endblock %}
@@ -14,15 +15,16 @@
 
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="titulo-pagina">Categorías</h1>
-
+        {% if user.is_superuser or request.user|has_group:"Colaborador"  %} 
         <a href="{% url 'apps.articulo:crearCategoria' %}" class="btn btn-gradient">
             + Agregar Categoría
         </a>
+         {% endif %}
     </div>
 
     <div class="tabla-card shadow-lg">
         <div class="table-responsive">
-            <table class="table table-dark table-hover align-middle tabla-estilada">
+            <table class="table table-hover align-middle tabla-estilada">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -40,11 +42,12 @@
                                class="btn btn-sm btn-outline-light me-2">
                                 📄 Ver artículos
                             </a>
-
+                            {% if user.is_superuser or request.user|has_group:"Colaborador"  %}   
                             <button class="btn btn-sm btn-outline-danger eliminar-categoria-btn"
                                 data-url="{% url 'apps.articulo:eliminarCategoria' pk=categoria.pk %}">
                                 🗑 Eliminar
                             </button>
+                             {% endif %}
                         </td>
                     </tr>
                     {% empty %}

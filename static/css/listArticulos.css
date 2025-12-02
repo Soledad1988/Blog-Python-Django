@@ -1,18 +1,18 @@
 /* --------------------------------------------
-   SECCIÓN GENERAL
+   TÍTULO
 -------------------------------------------- */
 .section-title {
-    color: #ffffff;
+    color: #0d0d0d;
     font-size: 2.4rem;
     font-weight: 800;
-    letter-spacing: -.5px;
+    letter-spacing: -0.5px;
     margin-bottom: 40px;
 }
 
 /* --------------------------------------------
-   ACTION BAR
+   BOTONES DE ORDEN (clase btn-orden)
 -------------------------------------------- */
-.action-btn {
+.btn-orden {
     background: #181818;
     color: #d6d6d6;
     padding: 8px 18px;
@@ -20,32 +20,17 @@
     font-weight: 600;
     border: 1px solid #2d2d2d;
     transition: .2s ease-in-out;
+    text-decoration: none;
 }
 
-.action-btn:hover {
+.btn-orden:hover {
     background: #292929;
-    color: #fff;
+    color: #ffffff;
     border-color: #444;
 }
 
-/* Botones principales */
-.action-btn-primary {
-    background: linear-gradient(to right, #5f4bff, #dd86f8);
-    color: white;
-    padding: 8px 20px;
-    border-radius: 25px;
-    font-weight: 600;
-    border: none;
-    transition: .25s ease;
-}
-
-.action-btn-primary:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
-
 /* --------------------------------------------
-   TARJETAS DE ARTÍCULOS
+   TARJETA DE ARTÍCULO
 -------------------------------------------- */
 .art-card {
     background: #101010;
@@ -64,42 +49,27 @@
     box-shadow: 0 8px 22px rgba(0,0,0,0.55);
 }
 
-/* Imagen */
-.art-img-wrapper {
-    width: 100%;
-    height: 190px;
-    overflow: hidden;
-    border-bottom: 1px solid #2b2b2b;
-}
-
 .art-img {
     width: 100%;
-    height: 100%;
+    height: 190px;
     object-fit: cover;
-    transition: scale .3s ease;
+    transition: transform .3s ease;
 }
 
 .art-card:hover .art-img {
-    scale: 1.05;
-}
-
-/* Contenido de la tarjeta */
-.art-body {
-    padding: 20px;
-    flex-grow: 1;
+    transform: scale(1.05);
 }
 
 .art-title {
     color: #ffffff;
     font-size: 1.25rem;
     font-weight: 700;
-    margin-bottom: 8px;
 }
 
 .art-date {
     color: #9f9f9f;
     font-size: 0.85rem;
-    margin-bottom: 10px;
+    margin: 8px 0;
 }
 
 .art-summary {
@@ -109,16 +79,21 @@
     min-height: 70px;
 }
 
-/* Botón Leer Más */
+/* --------------------------------------------
+   BOTÓN LEER MÁS
+-------------------------------------------- */
 .btn-read {
     background: linear-gradient(to right, #5f4bff, #dd86f8);
-    color: #fff;
+    color: #fff !important;
     padding: 8px 20px;
     border-radius: 20px;
     font-weight: 600;
     text-decoration: none;
+    display: inline-block;
+    transition: .25s ease-in-out;
 }
 
 .btn-read:hover {
     opacity: 0.9;
+    transform: translateY(-2px);
 }
