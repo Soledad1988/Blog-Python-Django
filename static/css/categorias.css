@@ -1,0 +1,97 @@
+/* --------------------------------------
+   Fondo general acorde al sitio
+-------------------------------------- */
+body {
+    background-color: #121212;
+    color: #eaeaea;
+}
+
+/* --------------------------------------
+   Título
+-------------------------------------- */
+.titulo-pagina {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+/* --------------------------------------
+   Tarjeta de la tabla
+-------------------------------------- */
+.tabla-card {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #2b2b2b;
+}
+
+/* --------------------------------------
+   Tabla
+-------------------------------------- */
+.table-dark {
+    background-color: #1a1a1a !important;
+}
+
+.table-dark thead tr {
+    background-color: #5f4bff !important;
+}
+
+.table-dark tbody tr:hover {
+    background-color: #282828 !important;
+}
+
+/* Texto de filas */
+.texto-categoria {
+    color: #e4e4e4;
+    font-size: 1rem;
+}
+
+/* --------------------------------------
+   Botones
+-------------------------------------- */
+.btn-gradient {
+    background: linear-gradient(to right, #5f4bff, #dd86f8);
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    transition: .2s ease-in-out;
+}
+
+.btn-gradient:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+/* Botón outline claro */
+.btn-outline-light {
+    border-radius: 20px;
+    padding: 0.45rem 1rem;
+    color: #fff;
+    border-color: #777;
+}
+
+.btn-outline-light:hover {
+    background: #5f4bff;
+    border-color: #5f4bff;
+}
+
+/* Botón eliminar */
+.btn-outline-danger {
+    border-radius: 20px;
+    padding: 0.45rem 1rem;
+    color: #ff6b6b;
+    border-color: #ff6b6b;
+}
+
+.btn-outline-danger:hover {
+    background: #ff6b6b;
+    color: #121212;
+}
+
+/* Columna de acciones */
+.acciones-columna {
+    white-space: nowrap;
+}

@@ -13,48 +13,48 @@
 <section class="container py-5">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="h1 m-0">Categorías</h1>
-        <a href="{% url 'apps.articulo:crearCategoria' %}" class="btn btn-primary">
+        <h1 class="titulo-pagina">Categorías</h1>
+
+        <a href="{% url 'apps.articulo:crearCategoria' %}" class="btn btn-gradient">
             + Agregar Categoría
         </a>
     </div>
 
-    <div class="table-responsive shadow rounded bg-white p-3">
-        <table class="table table-hover align-middle">
-            <thead class="table-dark">
-                <tr>
-                    <th>Nombre</th>
-                    <th class="text-center">Acciones</th>
-                </tr>
-            </thead>
+    <div class="tabla-card shadow-lg">
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle tabla-estilada">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                {% for categoria in categorias %}
-                <tr>
-                    <td class="fw-semibold">{{ categoria.nombre|capfirst }}</td>
-                    <td class="text-center">
-                        <a href="{% url 'apps.articulo:articulosPorCategoria' pk=categoria.pk %}" 
-                           class="btn btn-sm btn-success me-2">
-                            Ver artículos
-                        </a>
-                        <!--
-                        <a href="{% url 'apps.articulo:eliminarCategoria' pk=categoria.pk %}" 
-                           class="btn btn-sm btn-danger">
-                            🗑 Eliminar
-                        </a>-->
-                        <a class="btn btn-danger eliminar-categoria-btn"
-                            data-url="{% url 'apps.articulo:eliminarCategoria' pk=categoria.pk %}">
-                            🗑 Eliminar
-                        </a>
-                    </td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="2" class="text-center py-4">No hay categorías creadas.</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                <tbody>
+                    {% for categoria in categorias %}
+                    <tr>
+                        <td class="fw-semibold texto-categoria">{{ categoria.nombre|capfirst }}</td>
+                        <td class="text-center acciones-columna">
+
+                            <a href="{% url 'apps.articulo:articulosPorCategoria' pk=categoria.pk %}" 
+                               class="btn btn-sm btn-outline-light me-2">
+                                📄 Ver artículos
+                            </a>
+
+                            <button class="btn btn-sm btn-outline-danger eliminar-categoria-btn"
+                                data-url="{% url 'apps.articulo:eliminarCategoria' pk=categoria.pk %}">
+                                🗑 Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="2" class="text-center py-4 text-muted">No hay categorías creadas.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </section>

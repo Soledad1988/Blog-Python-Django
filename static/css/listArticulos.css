@@ -1,117 +1,122 @@
-/* ------------------------------
-   CONTENEDOR GENERAL
---------------------------------*/
+/* --------------------------------------------
+   SECCIÓN GENERAL
+-------------------------------------------- */
 .section-title {
-    color: #5f4bff;
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 35px;
+    color: #ffffff;
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -.5px;
+    margin-bottom: 40px;
 }
 
-/* ------------------------------
+/* --------------------------------------------
    ACTION BAR
---------------------------------*/
-.action-bar .btn {
+-------------------------------------------- */
+.action-btn {
+    background: #181818;
+    color: #d6d6d6;
     padding: 8px 18px;
-    border-radius: 20px;
+    border-radius: 22px;
     font-weight: 600;
-    font-size: 0.95rem;
+    border: 1px solid #2d2d2d;
+    transition: .2s ease-in-out;
 }
 
-/* Botones de orden */
-.btn-orden {
-    background: #1a1a1a;
-    color: #dcdcdc;
-    border: 1px solid #333;
-}
-
-.btn-orden:hover {
-    background: #333;
+.action-btn:hover {
+    background: #292929;
     color: #fff;
-}
-
-/* Botón outline */
-.btn-outline {
-    color: #dcdcdc;
-    border: 1px solid #5f4bff;
-}
-
-.btn-outline:hover {
-    background: #5f4bff;
-    color: white;
+    border-color: #444;
 }
 
 /* Botones principales */
-.btn-primary-action {
+.action-btn-primary {
     background: linear-gradient(to right, #5f4bff, #dd86f8);
     color: white;
-    border-radius: 20px;
-    padding: 8px 22px;
+    padding: 8px 20px;
+    border-radius: 25px;
     font-weight: 600;
+    border: none;
+    transition: .25s ease;
 }
 
-.btn-primary-action:hover {
+.action-btn-primary:hover {
     opacity: 0.9;
+    transform: translateY(-2px);
 }
 
-
-/* ------------------------------
+/* --------------------------------------------
    TARJETAS DE ARTÍCULOS
---------------------------------*/
+-------------------------------------------- */
 .art-card {
-    background: #111;
+    background: #101010;
     border-radius: 18px;
-    padding: 25px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    border: 1px solid #2a2a2a;
+    border: 1px solid #2b2b2b;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.45);
+    transition: transform .25s ease, box-shadow .25s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .art-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.55);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.55);
 }
 
 /* Imagen */
+.art-img-wrapper {
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+    border-bottom: 1px solid #2b2b2b;
+}
+
 .art-img {
     width: 100%;
-    height: 180px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid #2b2b2b;
+    transition: scale .3s ease;
 }
 
-/* Título */
+.art-card:hover .art-img {
+    scale: 1.05;
+}
+
+/* Contenido de la tarjeta */
+.art-body {
+    padding: 20px;
+    flex-grow: 1;
+}
+
 .art-title {
-    color: #fff;
+    color: #ffffff;
     font-size: 1.25rem;
     font-weight: 700;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    text-transform: capitalize;
+    margin-bottom: 8px;
 }
 
-/* Fecha */
 .art-date {
-    color: #b5b5b5;
+    color: #9f9f9f;
     font-size: 0.85rem;
     margin-bottom: 10px;
 }
 
-/* Resumen */
 .art-summary {
-    color: #d0d0d0;
+    color: #cecece;
     font-size: 0.95rem;
-    min-height: 65px;
+    margin-bottom: 18px;
+    min-height: 70px;
 }
 
 /* Botón Leer Más */
 .btn-read {
     background: linear-gradient(to right, #5f4bff, #dd86f8);
     color: #fff;
-    padding: 7px 20px;
+    padding: 8px 20px;
     border-radius: 20px;
     font-weight: 600;
+    text-decoration: none;
 }
 
 .btn-read:hover {

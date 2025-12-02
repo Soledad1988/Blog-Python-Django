@@ -1,61 +1,67 @@
-/* --------------------------
-   CONTENEDOR GENERAL
---------------------------- */
-.container-contacto {
-    background: #ffffff;
-    padding: 40px 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+/* Fondo superior con color más oscuro */
+.contacto-hero {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
 }
 
+/* Tarjeta principal */
+.contacto-card {
+    background: #fff;
+    padding: 45px 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+    border: 1px solid #e6e6e6;
+    transition: transform .25s ease;
+}
 
-/* --------------------------
-   CAMPOS DEL FORMULARIO
---------------------------- */
-.container-contacto input,
-.container-contacto textarea,
-.container-contacto select {
-    border: 1px solid #dcdcdc !important;
-    border-radius: 8px !important;
-    background: #fafafa;
-    padding: 12px 15px !important;
-    font-size: 1rem !important;
+.contacto-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Título */
+.titulo-formulario {
+    font-weight: 600;
+    color: #2e7d32;
+    border-left: 5px solid #43a047;
+    padding-left: 12px;
+}
+
+/* Campos del formulario */
+.contacto-card input,
+.contacto-card textarea,
+.contacto-card select {
+    border: 1px solid #d0d0d0 !important;
+    border-radius: 10px !important;
+    background: #f7f7f7;
+    padding: 12px !important;
     transition: all .25s ease;
 }
 
-/* Focus */
-.container-contacto input:focus,
-.container-contacto textarea:focus,
-.container-contacto select:focus {
+.contacto-card input:focus,
+.contacto-card textarea:focus,
+.contacto-card select:focus {
     border-color: #4caf50 !important;
     background: #fff !important;
-    box-shadow: 0 0 6px rgba(76,175,80,0.3) !important;
+    box-shadow: 0 0 6px rgba(76,175,80,0.3);
 }
 
-/* Textarea menos alta */
-.container-contacto textarea {
-    min-height: 120px !important;
-    max-height: 200px !important;
+/* Textarea */
+.contacto-card textarea {
+    min-height: 130px;
     resize: vertical;
 }
 
-/* Espaciado entre campos */
-.container-contacto .form-group,
-.container-contacto .form-control {
-    margin-bottom: 18px;
-}
-
 /* Botón */
-.container-contacto .btn-success {
-    padding: 12px 35px;
-    font-size: 1.1rem;
-    border-radius: 8px;
-    transition: all .25s ease;
+.btn-enviar {
     background-color: #4caf50;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 1.1rem;
     border: none;
+    transition: .25s ease;
 }
 
-.container-contacto .btn-success:hover {
-    background-color: #43a047;
-    box-shadow: 0 4px 12px rgba(76,175,80,0.35);
+.btn-enviar:hover {
+    background-color: #388e3c;
+    box-shadow: 0 4px 14px rgba(56,142,60,0.35);
 }
+

@@ -1,0 +1,78 @@
+/* Fondo suave */
+body {
+    background: #f5f6f8;
+    font-family: "Inter", sans-serif;
+}
+
+/* Sección superior */
+.container-fluid.bg-light {
+    background: #fafafa !important;
+    padding: 40px 0 !important;
+}
+
+.container-fluid h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #222;
+}
+
+.container-fluid p {
+    color: #444;
+}
+
+/* FORM WIDTH */
+.col-md-9.m-auto {
+    max-width: 450px;
+}
+
+/* Inputs Crispy */
+input,
+select,
+textarea {
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+    background: white !important;
+    padding: 10px !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #6c63ff !important;
+    box-shadow: 0 0 4px rgba(108, 99, 255, 0.4) !important;
+}
+
+/* === BOTONES (finos, modernos, pequeños) === */
+.btn {
+    padding: 9px 14px;      /* tamaño equilibrado */
+    font-size: 0.9rem;
+    border-radius: 6px;
+    font-weight: 500;
+    width: auto !important; /* evito botones gigantes */
+}
+
+/* Botón azul */
+.btn-primary {
+    background: #6c63ff !important;
+    border: none !important;
+}
+
+.btn-primary:hover {
+    background: #574fe0 !important;
+}
+
+/* Botón verde */
+.btn-success {
+    background: #28a745 !important;
+    border: none !important;
+}
+
+.btn-success:hover {
+    background: #1e8a37 !important;
+}
+
+/* Arreglo: elimina “cuadrado raro” o fondo erróneo */
+.row.py-5 {
+    background: transparent !important;
+    box-shadow: none !important;
+}
