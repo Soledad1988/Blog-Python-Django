@@ -13,28 +13,30 @@
 
         <div class="usuarios-list">
 
-            {% for usuario in usuarios %}
-            <div class="usuario-card">
+           {% for usuario in usuarios %}
+    <div class="usuario-card">
 
-                <div class="usuario-info">
-                    <span class="usuario-nombre">
-                        {{ usuario.username }}
-                    </span>
+        <div class="usuario-info">
+            <span class="usuario-nombre">{{ usuario.username }}</span>
 
-                   
-                        <span class="usuario-usted">(Usted)</span>
-              
-                </div>
-                    
-                    <a class="btn btn-outline-danger eliminar-usuario-btn"
-                        data-url="{% url 'apps.usuario:eliminarUsuario' id=usuario.id %}">
-                        Eliminar
-                    </a>
+            {% if not usuario.is_active %}
+                <span class="badge bg-danger">DESHABILITADO</span>
+            {% endif %}
+        </div>
 
-               </div>
-            {% empty %}
-                <p class="sin-usuarios">No hay usuarios registrados.</p>
-            {% endfor %}
+        {% if request.user.is_superuser or request.user.groups.all.0.name == "Colaborador" %}
+            <form method="POST" action="{% url 'apps.usuario:toggleUsuario' id=usuario.id %}">
+                {% csrf_token %}
+                {% if usuario.is_active %}
+                    <button class="btn btn-warning">Deshabilitar</button>
+                {% else %}
+                    <button class="btn btn-success">Habilitar</button>
+                {% endif %}
+            </form>
+        {% endif %}
+    </div>
+{% endfor %}
+
 
         </div>
 
