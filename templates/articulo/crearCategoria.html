@@ -1,37 +1,64 @@
 {% extends 'home.html' %}
-{% load crispy_forms_tags %}
 {% load static %}
+{% load colaborador_tags %}
 
-{% block title %}Crear Categoría | Blog{% endblock %}
+{% block title %}Categorías | Blog{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/articulosForm.css' %}">
+<link rel="stylesheet" href="{% static 'css/categorias.css' %}?v=10">
 {% endblock %}
 
 {% block hero_section %}{% endblock %}
 
 {% block content %}
-
 <section class="container py-5">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Nueva Categoría</h1>
-        <a href="{% url 'apps.articulo:listCategoria' %}" class="btn btn-secondary">
-            ← Volver al listado
+        <h1 class="titulo-pagina">Categorías</h1>
+        {% if user.is_superuser or request.user|has_group:"Colaborador"  %} 
+        <a href="{% url 'apps.articulo:crearCategoria' %}" class="btn btn-gradient">
+            + Agregar Categoría
         </a>
+         {% endif %}
     </div>
 
-    <div class="card shadow p-4" style="max-width: 600px; margin: auto;">
-        <form method="post">
-            {% csrf_token %}
-            {{ form|crispy }}
+    <div class="tabla-card shadow-lg">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle tabla-estilada">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
 
-            <button type="submit" class="btn btn-primary w-100 mt-3">
-                + Crear Categoría
-            </button>
-        </form>
+                <tbody>
+                    {% for categoria in categorias %}
+                    <tr>
+                        <td class="fw-semibold texto-categoria">{{ categoria.nombre|capfirst }}</td>
+                        <td class="text-center acciones-columna">
+
+                            <a href="{% url 'apps.articulo:articulosPorCategoria' pk=categoria.pk %}" 
+                               class="btn btn-sm btn-outline-light me-2">
+                                📄 Ver artículos
+                            </a>
+                            {% if user.is_superuser or request.user|has_group:"Colaborador"  %}   
+                            <button class="btn btn-sm btn-outline-danger eliminar-categoria-btn"
+                                data-url="{% url 'apps.articulo:eliminarCategoria' pk=categoria.pk %}">
+                                🗑 Eliminar
+                            </button>
+                             {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="2" class="text-center py-4 text-muted">No hay categorías creadas.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </section>
-
 {% endblock %}
