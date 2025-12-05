@@ -33,7 +33,6 @@ AUTH_USER_MODEL    ='usuario.Usuario'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL= '/'
 
-MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Application definition
 
@@ -49,6 +48,9 @@ INSTALLED_APPS = [
     'apps.usuario',
     'apps.comentario',
     'apps.contacto',
+
+    "crispy_forms",
+    "crispy_bootstrap5",
 
     "crispy_forms",
     "crispy_bootstrap5",
@@ -144,4 +146,7 @@ STATIC_ROOT = '../staticfiles/'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR.parent / "media"
+MEDIA_ROOT = BASE_DIR / "media"
+
+# Configuracion email de contacto
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

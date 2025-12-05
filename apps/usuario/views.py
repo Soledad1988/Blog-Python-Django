@@ -3,14 +3,16 @@ from .forms import RegistroUsuarioForm
 from ..articulo.models import Articulo
 from ..comentario.models import Comentario
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.views.generic import CreateView, ListView, DeleteView
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
-from django.http import JsonResponse
-from django.contrib.auth.forms import PasswordResetForm
+from django.views import View
+from django.contrib.auth.models import User
+from django.shortcuts import redirect, get_object_or_404
+from django.contrib.auth import get_user_model
 
 class RegistrarUsuario(CreateView):
     template_name = 'registracion/registrar.html'
@@ -51,6 +53,7 @@ class UsuarioListView(LoginRequiredMixin, ListView):
 
 class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
     model = Usuario
+    template_name = 'apps.usuario:listUsuario'
     success_url = reverse_lazy('apps.usuario:listUsuario')
 
     def get_context_data(self, **kwargs):
@@ -61,29 +64,41 @@ class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
         return context
 
     def post(self, request, *args, **kwargs):
-        self.object = self.get_object()
-
-        # 🚫 Evitar que el usuario se elimine a sí mismo
-        if self.object == request.user:
-            messages.error(request, "No podés eliminar tu propio usuario.")
-            return redirect('apps.usuario:listUsuario')
-
         eliminar_comentarios = request.POST.get('eliminarComentarios', False)
         eliminar_posts = request.POST.get('eliminarPosts', False)
-
+        self.object = self.get_object()
         if eliminar_comentarios:
             Comentario.objects.filter(usuario=self.object).delete()
 
         if eliminar_posts:
             Articulo.objects.filter(autor=self.object).delete()
-
         messages.success(request, f'Usuario {self.object.username} eliminado correctamente')
         return self.delete(request, *args, **kwargs)
-
-
-class MyPasswordResetView(PasswordResetView):
+    
+#RecuperarContra
+class RecuperarContraView(PasswordResetView):
     template_name = 'registracion/recuperarContra.html'
 
     def get_success_url(self):
         messages.success(self.request, 'Se envió un email de recuperación. Revise su casilla de correo para recuperar su cuenta.')
         return reverse('index')
+    
+#Deshabilitar Usuario
+User = get_user_model()
+
+class UsuarioToggleActiveView(LoginRequiredMixin, UserPassesTestMixin, View):
+
+    def test_func(self):
+        # Solo admins o colaboradores pueden hacerlo
+        return self.request.user.is_superuser or self.request.user.groups.filter(name='Colaborador').exists()
+
+    def post(self, request, id):
+        usuario = get_object_or_404(User, id=id)
+
+        usuario.is_active = not usuario.is_active
+        usuario.save()
+
+        estado = "habilitado" if usuario.is_active else "deshabilitado"
+        messages.success(request, f"El usuario {usuario.username} fue {estado} correctamente.")
+
+        return redirect("apps.usuario:listUsuario")

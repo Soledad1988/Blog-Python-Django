@@ -16,16 +16,18 @@
     opacity: 0.85;
 }
 
+.nosotros-intro p {
+    color: #333 !important;
+}
+
 /* Texto introductorio */
 .nosotros-intro .titulo {
-    color: #fff;
     font-size: 38px;
     margin-bottom: 15px;
 }
 
 .nosotros-intro .texto {
     font-size: 18px;
-    color: #dcdcdc;
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.7;
