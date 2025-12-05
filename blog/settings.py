@@ -51,10 +51,6 @@ INSTALLED_APPS = [
 
     "crispy_forms",
     "crispy_bootstrap5",
-
-    "crispy_forms",
-    "crispy_bootstrap5",
-
 ]
 
 # Crispy
