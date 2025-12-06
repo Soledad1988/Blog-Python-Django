@@ -19,3 +19,4 @@ urlpatterns = [
     # 🔥 CORREGIDA
     path('categoria/<int:pk>/eliminar/', CategoriaDeleteView.as_view(), name='eliminarCategoria'),
 ]
+
