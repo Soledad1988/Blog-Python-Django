@@ -21,6 +21,7 @@ from .views import index, nosotros
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls import handler404
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -31,8 +32,11 @@ urlpatterns = [
     path("nosotros/", nosotros, name="nosotros"),
     path('contacto/', include('apps.contacto.urls')),
     path('', include('apps.usuario.urls')),
-    path('usuario/', include('apps.usuario.urls')),
+    path('', include('apps.usuario.urls')),
+    
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns() 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+# <<< ESTA LÍNEA VA AL FINAL, FUERA DE urlpatterns >>>
+handler404 = "blog.views.error_404"

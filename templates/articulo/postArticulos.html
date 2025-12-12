@@ -62,7 +62,6 @@
                             </a>
                         {% endif %}
                     </div>
-
                 </div>
             </div>
         </div>
@@ -97,6 +96,11 @@
 
                                         {% if user.is_superuser or request.user|has_group:"Colaborador" %}
                                             <div class="comment-actions">
+                                                <a href="?edit={{ comentario.pk }}#comentario"
+                                                    class="btn btn-sm btn-outline-primary">
+                                                    Editar
+                                                </a>
+
                                                 <button class="btn btn-sm btn-danger eliminar-comentario-btn"
                                                     data-url="{% url 'apps.comentario:eliminarComentario' comentario.pk %}">
                                                     Eliminar

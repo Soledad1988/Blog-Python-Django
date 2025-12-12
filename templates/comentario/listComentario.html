@@ -16,6 +16,7 @@
             </div>
             <section>
               {% if user.is_superuser %}
+                  <a style="font-size: small;" href="{% url 'apps.comentario:editarComentario' c.pk %}">Editar comentario</a>
                   <a style="font-size: small;" href="{% url 'apps.comentario:eliminarComentario' c.pk %}">Eliminar comentario</a>
               {% endif %}
             </section>

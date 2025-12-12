@@ -32,22 +32,65 @@ class ArticuloListView(ListView):
         return context
 
 
-#Artículo individual
+def post(self, request, *args, **kwargs):
+
+    # Detectar si se está editando
+    edit_id = request.GET.get("edit")
+    if edit_id:
+        comentario = Comentario.objects.get(pk=edit_id)
+        form = ComentarioForm(request.POST, instance=comentario)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Comentario actualizado con éxito.")
+            return redirect('apps.articulo:articuloDetalle', id=self.kwargs['id'])
+
+    # Si NO es edición → crear comentario nuevo
+    form = ComentarioForm(request.POST)
+    if form.is_valid():
+        comentario = form.save(commit=False)
+        comentario.usuario = request.user
+        comentario.articulo_id = self.kwargs['id']
+        comentario.save()
+        messages.success(self.request, 'Comentario creado con éxito.')
+        return redirect('apps.articulo:articuloDetalle', id=self.kwargs['id'])
+
+    # Si hay errores
+    context = self.get_context_data(**kwargs)
+    context['form'] = form
+    return self.render_to_response(context)
+
+
+# Artículo individual
 class ArticuloDetailView(DetailView):
     model = Articulo
-    template_name = "articulo/postArticulos.html" 
+    template_name = "articulo/postArticulos.html"
     success_url = 'articulo'
-    context_object_name = "articulo" 
-    pk_url_kwarg = "id" 
+    context_object_name = "articulo"
+    pk_url_kwarg = "id"
     queryset = Articulo.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = ComentarioForm()
+
+        # Comentarios del artículo
         context['comentarios'] = Comentario.objects.filter(articulo_id=self.kwargs['id'])
+
+        # ¿Editar comentario?
+        edit_id = self.request.GET.get("edit")
+        if edit_id:
+            comentario = Comentario.objects.get(pk=edit_id)
+            context['editando'] = True
+            context['comentario_editar'] = comentario
+            context['form'] = ComentarioForm(instance=comentario)
+        else:
+            context['editando'] = False
+            context['form'] = ComentarioForm()
+
         return context
 
     def post(self, request, *args, **kwargs):
+        """Crear comentario nuevo."""
         form = ComentarioForm(request.POST)
         if form.is_valid():
             messages.success(self.request, 'Comentario creado con éxito.')
@@ -56,10 +99,11 @@ class ArticuloDetailView(DetailView):
             comentario.articulo_id = self.kwargs['id']
             comentario.save()
             return redirect('apps.articulo:articuloDetalle', id=self.kwargs['id'])
-        else:
-            context = self.get_context_data(**kwargs)
-            context['form'] = form
-            return self.render_to_response(context)
+        
+        context = self.get_context_data(**kwargs)
+        context['form'] = form
+        return self.render_to_response(context)
+
 
 
 #Artículo creación
