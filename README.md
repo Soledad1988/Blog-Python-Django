@@ -191,4 +191,8 @@ Proyecto-final-Django/
 
 ## 📜 Licencia
 
+<<<<<<< HEAD
 Este proyecto puede utilizarse con fines educativos y de práctica.
+=======
+Este proyecto puede utilizarse con fines educativos y de práctica.
+>>>>>>> cdad88e9c0941f2c9f505e29b27f975d1e5eff34
